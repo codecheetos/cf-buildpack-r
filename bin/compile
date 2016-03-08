@@ -128,13 +128,11 @@ ln -s /usr/lib/x86_64-linux-gnu/crti.o $R_HOME/lib64/crti.o 2>&1
 
 #sudo cp -r $R_HOME/etc /usr/local/lib/R
 ls -l $VENDOR_DIR
-mkdir -p /usr/local/lib/R/etc
 ln -s $VENDOR_DIR/R/etc /usr/local/lib/R/etc
 
 echo "COMPLETED LINK BEFORE R/etc"
 ls -ltr /usr/local/lib
 echo "COMPLETED LINK AFTER R/etc"
-sleep 3
 
 #mkdir $R_INCLUDE/sys
 #mkdir $R_INCLUDE/gnu
@@ -168,6 +166,11 @@ echo "Executing init.r script" | indent
 
 export PATH=$PATH:$R_HOME/bin
 which R
+
+unset R_HOME
+unsetenv R_HOME
+
+R --version
 
 # set the CRAN mirror and run the init.r program
 R -s <<RPROG
