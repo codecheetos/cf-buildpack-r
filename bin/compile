@@ -92,18 +92,13 @@ echo "Downloading and unpacking R binaries from $R_BINARIES" | indent
 mkdir -p $VENDOR_DIR && mkdir -p /app/vendor
 #curl -v $R_BINARIES -s -o r_binaries.tar.gz
 echo "Downloaded R binary successfully" | indent
-pwd
-echo "VENDOR_DIR=${VENDOR_DIR}"
-uname -a 
-ls -l /tmp/buildpacks/cf-buildpack-r/*
-ls -l $VENDOR_DIR
-ls -ltr r_binaries.tar.gz
+#ls -l /tmp/buildpacks/cf-buildpack-r/*
 
 echo "Starting tar xzf of r binary"
 #tar xzf r_binaries.tar.gz -C $VENDOR_DIR
 tar xzf /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binaries-20160307-2249.tar.gz -C $VENDOR_DIR
 echo "Completed tar xzf of r binary"
-rm r_binaries.tar.gz
+#rm r_binaries.tar.gz
 
 echo "Directory created, R pulled, unpacked" | indent
 
