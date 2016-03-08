@@ -130,8 +130,10 @@ ln -s /usr/lib/x86_64-linux-gnu/crti.o $R_HOME/lib64/crti.o 2>&1
 ls -l $VENDOR_DIR
 ln -s /usr/local/lib/R/etc  $VENDOR_DIR/R/etc
 
+echo "COMPLETED LINK BEFORE R/etc"
 ls -ltr /usr/local/lib
-
+echo "COMPLETED LINK AFTER R/etc"
+sleep 3
 
 #mkdir $R_INCLUDE/sys
 #mkdir $R_INCLUDE/gnu
@@ -162,6 +164,9 @@ touch /app/vendor/R/lib64/R/doc/html/R.css
 
 # install dependencies from CRAN
 echo "Executing init.r script" | indent
+
+export PATH=$PATH:$R_HOME/bin
+which R
 
 # set the CRAN mirror and run the init.r program
 R -s <<RPROG
