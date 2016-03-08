@@ -168,7 +168,6 @@ export PATH=$PATH:$R_HOME/bin
 which R
 
 unset R_HOME
-unsetenv R_HOME
 
 R --version
 
