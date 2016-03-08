@@ -76,7 +76,8 @@ R_VERSION="3.2.3"
 S3_BUCKET="heroku-buildpack-r"
 #R_BINARIES="http://${S3_BUCKET}.s3.amazonaws.com/R-${R_VERSION}-binaries-${BUILD_PACK_VERSION}.tar.gz"
 #R_BINARIES="https://s3.amazonaws.com/r-buildpack/R-3.1.0-binaries-20140629-2201.tar.gz"
-R_BINARIES="https://github.com/codecheetos/cf-buildpack-r/blob/master/R-3.2.3-binaries-20160307-2249.tar.gz"
+#R_BINARIES="https://github.com/codecheetos/cf-buildpack-r/blob/master/R-3.2.3-binaries-20160307-2249.tar.gz"
+R_BINARIES="http://expirebox.com/files/818999ea0e62df982999453f110a5c7a.gz"
 
 VENDOR_DIR="$BUILD_DIR/vendor"
 R_HOME="$VENDOR_DIR/R"
@@ -91,7 +92,8 @@ echo "Vendoring R $R_VERSION" | indent
 echo "Downloading and unpacking R binaries" | indent
 mkdir -p $VENDOR_DIR && mkdir -p /app/vendor
 curl $R_BINARIES -s -o r_binaries.tar.gz
-tar --version
+ls -ltr r_binaries.tar.gz
+
 tar xzf r_binaries.tar.gz -C $VENDOR_DIR
 rm r_binaries.tar.gz
 pwd
