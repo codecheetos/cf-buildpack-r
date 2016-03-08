@@ -95,6 +95,7 @@ echo "Downloaded R binary successfully" | indent
 
 echo "Starting tar xzf of r binary"
 #tar xzf r_binaries.tar.gz -C $VENDOR_DIR
+tar --version
 tar xzf /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binaries-20160308-1054.tar.gz -C $VENDOR_DIR
 echo "Completed tar xzf of r binary"
 #rm r_binaries.tar.gz
