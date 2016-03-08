@@ -128,7 +128,8 @@ ln -s /usr/lib/x86_64-linux-gnu/crti.o $R_HOME/lib64/crti.o 2>&1
 
 #sudo cp -r $R_HOME/etc /usr/local/lib/R
 ls -l $VENDOR_DIR
-ln -s /usr/local/lib/R/etc  $VENDOR_DIR/R/etc
+mkdir -p /usr/local/lib/R/etc
+ln -s $VENDOR_DIR/R/etc /usr/local/lib/R/etc
 
 echo "COMPLETED LINK BEFORE R/etc"
 ls -ltr /usr/local/lib
