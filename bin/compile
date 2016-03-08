@@ -168,6 +168,8 @@ export PATH=$PATH:$R_HOME/bin
 which R
 
 unset R_HOME
+sudo apt-get install r-base-dev
+sudo apt-get install r-base
 
 echo "LD_LIBRARY_PATH:${LD_LIBRARY_PATH}"
 
