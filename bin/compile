@@ -88,13 +88,14 @@ mkdir -p $CACHE_DIR
 echo "Vendoring R $R_VERSION" | indent
 
 # download and unpack binaries
-echo "Downloading and unpacking R binaries" | indent
+echo "Downloading and unpacking R binaries from $R_BINARIES" | indent
 mkdir -p $VENDOR_DIR && mkdir -p /app/vendor
-curl $R_BINARIES -s -o r_binaries.tar.gz
+curl -v $R_BINARIES -s -o r_binaries.tar.gz
 echo "Downloaded R binary successfully" | indent
 pwd
 echo "VENDOR_DIR=${VENDOR_DIR}"
 uname -a 
+ls -l /tmp/buildpacks/cf-buildpack-r/*
 ls -l $VENDOR_DIR
 ls -ltr r_binaries.tar.gz
 
