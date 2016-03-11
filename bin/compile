@@ -99,7 +99,7 @@ echo "Starting tar xzf of r binary"
 cat /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binary/R-3.2.3-binariesa* > /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binaries-20160310-1505.tar.gz
 tar xzf /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binaries-20160310-1505.tar.gz -C $VENDOR_DIR
 
-echo "Completed tar xzf of r binary"
+echo "Completed tar xzf of r binary in $VENDOR_DIR"
 #rm /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binaries-20160308-1054.tar.gz
 rm /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binaries-20160310-1505.tar.gz
 
