@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
 
+# Analytic tar.gz file
+export ANALYTIC_TAR_GZ=`ls -1 /app/*.tar.gz`
+echo "Found analytic tar.gz file: ${ANALYTIC_TAR_GZ}"
+
 cat <<EOF
 config_vars:
   CAN_SET_IN_RELEASE: doesnt_seem_to_work

@@ -161,9 +161,14 @@ echo "Executing init.r script" | indent
 
 R --version
 
+# Analytic tar.gz file
+export ANALYTIC_TAR_GZ=`ls -1 *.tar.gz`
+echo "Found analytic tar.gz file: ${ANALYTIC_TAR_GZ}"
+
 # set the CRAN mirror and run the init.r program
 R -s <<RPROG
   Sys.setenv(BUILD_DIR="$BUILD_DIR")
+  Sys.setenv(ANALYTIC_TAR_GZ="$ANALYTIC_TAR_GZ")
   setwd("$BUILD_DIR")
   r <- getOption("repos");
   print(r)
