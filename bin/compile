@@ -169,6 +169,7 @@ R -s <<RPROG
   print(r)
   r["CRAN"] <- "$CRAN_MIRROR";
   options(repos=r);
+  `cat $BUILD_DIR/.def.init.r`
   `cat $BUILD_DIR/init.r`
 RPROG
 
