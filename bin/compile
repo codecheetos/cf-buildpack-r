@@ -73,8 +73,6 @@ GLIBC_VERSION="2.7"
 R_VERSION="3.2.3"
 
 S3_BUCKET="heroku-buildpack-r"
-#R_BINARIES="http://${S3_BUCKET}.s3.amazonaws.com/R-${R_VERSION}-binaries-${BUILD_PACK_VERSION}.tar.gz"
-#R_BINARIES="https://s3.amazonaws.com/r-buildpack/R-3.1.0-binaries-20140629-2201.tar.gz"
 R_BINARIES="https://github.com/codecheetos/cf-buildpack-r/blob/master/R-3.2.3-binaries-20160307-2249.tar.gz?raw=true"
 
 VENDOR_DIR="$BUILD_DIR/vendor"
@@ -87,21 +85,21 @@ mkdir -p $CACHE_DIR
 echo "Vendoring R $R_VERSION" | indent
 
 # download and unpack binaries
-echo "Downloading and unpacking R binaries from $R_BINARIES" | indent
 mkdir -p $VENDOR_DIR && mkdir -p /app/vendor
-#curl -v $R_BINARIES -s -o r_binaries.tar.gz
 echo "Downloaded R binary successfully" | indent
 
 echo "Starting tar xzf of r binary"
-#tar xzf r_binaries.tar.gz -C $VENDOR_DIR
-#tar xzf /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binaries-20160308-1054.tar.gz -C $VENDOR_DIR
 
-cat /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binary/R-3.2.3-binariesa* > /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binaries-20160310-1505.tar.gz
-tar xzf /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binaries-20160310-1505.tar.gz -C $VENDOR_DIR
+ls -ltr ${BUILD_DIR}
+ls -ltr ${BUILD_DIR}/R-3.2.3-binary
+echo "Concatenating R binary files..."
+cat ${BUILD_DIR}/R-3.2.3-binary/R-3.2.3-binariesa* > ${VENDOR_DIR}/R-3.2.3-binaries-20160310-1505.tar.gz
+echo "Untarring R binary files into ${VENDOR_DIR}..."
+tar xzf ${VENDOR_DIR}/R-3.2.3-binaries-20160310-1505.tar.gz -C $VENDOR_DIR
+ls -ltr ${VENDOR_DIR}
 
 echo "Completed tar xzf of r binary in $VENDOR_DIR"
-#rm /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binaries-20160308-1054.tar.gz
-rm /tmp/buildpacks/cf-buildpack-r/R-3.2.3-binaries-20160310-1505.tar.gz
+rm ${VENDOR_DIR}/R-3.2.3-binaries-20160310-1505.tar.gz
 
 echo "Directory created, R pulled, unpacked" | indent
 
@@ -111,7 +109,7 @@ cp -R $VENDOR_DIR/glibc-$GLIBC_VERSION /app/vendor/glibc-$GLIBC_VERSION
 #cp -R $VENDOR_DIR/readline /app/vendor/readline
 cp -R $VENDOR_DIR/R /app/vendor/R
 
-echo "Stuff copied" | indent
+echo "All files copied. R install done." | indent
 
 
 # R needs to know where gfortran and glibc header files are
