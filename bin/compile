@@ -91,13 +91,15 @@ echo "Downloaded R binary successfully" | indent
 echo "Starting tar xzf of r binary"
 
 echo "Concatenating R binary files..."
-cat ${BUILDPACK_DIR}/R-3.2.3-binary/R-3.2.3-binariesa* > ${VENDOR_DIR}/R-3.2.3-binaries-20160310-1505.tar.gz
+#cat ${BUILDPACK_DIR}/R-3.2.3-binary/R-3.2.3-binariesa* > ${VENDOR_DIR}/R-3.2.3-binaries-20160310-1505.tar.gz
 echo "Untarring R binary files into ${VENDOR_DIR}..."
-tar xzf ${VENDOR_DIR}/R-3.2.3-binaries-20160310-1505.tar.gz -C $VENDOR_DIR
+#tar xzf ${VENDOR_DIR}/R-3.2.3-binaries-20160310-1505.tar.gz -C $VENDOR_DIR
+tar xzf ${VENDOR_DIR}/R-3.2.3-binaries-20160308-1054.tar.gz -C $VENDOR_DIR
 
 
 echo "Completed tar xzf of r binary in $VENDOR_DIR"
-rm ${VENDOR_DIR}/R-3.2.3-binaries-20160310-1505.tar.gz
+#rm ${VENDOR_DIR}/R-3.2.3-binaries-20160310-1505.tar.gz
+rm ${VENDOR_DIR}/R-3.2.3-binaries-20160308-1054.tar.gz
 
 
 echo "Directory created, R pulled, unpacked" | indent
